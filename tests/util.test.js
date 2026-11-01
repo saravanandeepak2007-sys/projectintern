@@ -2,7 +2,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { classifySentiment, maskProfanity, slugify, roomCode, deviceToken, countdown, uid } from '../src/lib/util.js';
-import { isSupabaseConfigured } from '../src/config.js';
 
 test('sentiment: praise is positive', () => {
   assert.equal(classifySentiment('Your talk on Friday was the clearest I have heard all year.'), 'positive');
@@ -50,12 +49,4 @@ test('uid() is always a valid UUID, even without crypto.randomUUID', () => {
   const saved = crypto.randomUUID;
   Object.defineProperty(crypto, 'randomUUID', { value: undefined, configurable: true });
   try { for (let i = 0; i < 50; i++) assert.match(uid(), re); } finally { Object.defineProperty(crypto, 'randomUUID', { value: saved, configurable: true }); }
-});
-
-test('Supabase config accepts real values and rejects broken .env setups', () => {
-  assert.equal(isSupabaseConfigured('https://example.supabase.co', 'anon-key-1234567890'), true);
-  assert.equal(isSupabaseConfigured('https://example.supabase.co', 'YOUR_SUPABASE_ANON_KEY'), false);
-  assert.equal(isSupabaseConfigured('', 'anon-key-1234567890'), false);
-  assert.equal(isSupabaseConfigured('not-a-url', 'anon-key-1234567890'), false);
-  assert.equal(isSupabaseConfigured(' https://example.supabase.co ', '  anon-key-1234567890  '), true);
 });

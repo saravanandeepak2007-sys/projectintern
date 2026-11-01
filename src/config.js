@@ -1,5 +1,6 @@
-const MY_SUPABASE_URL = 'http://localhost:5173/#/auth';   // <- your Project URL
-const MY_SUPABASE_ANON_KEY = 'sb_publishable_VnbFVx5U2YqTkw3jfah6ww_F8aVMWiW'; // <- your anon key
+const MY_SUPABASE_URL = 'https://qbcuivkpyukrexnuynsk.supabase.co';
+
+const MY_SUPABASE_ANON_KEY = 'sb_publishable_YY7WLygeNMtNQLJPobmS9A_BTgO_V2p';
 
 const clean = (v) => String(v || '').trim().replace(/\/+$/, '').replace(/\/rest\/v1$/, '');
 const isPlaceholder = (v) => !v || /your[-_]|placeholder|paste_/i.test(v);
