@@ -13,7 +13,7 @@ class Boundary extends React.Component {
   reset = () => this.setState({ err: null });
   componentDidMount() { window.addEventListener('hashchange', this.reset); }
   componentWillUnmount() { window.removeEventListener('hashchange', this.reset); }
-  componentDidCatch(err, info) { console.error('[WhisperHub] crash:', err, info?.componentStack); }
+  componentDidCatch(err, info) { console.error('[Veyora] crash:', err, info?.componentStack); }
   render() {
     if (!this.state.err) return this.props.children;
     return (
@@ -38,4 +38,3 @@ createRoot(document.getElementById('root')).render(
     </Boundary>
   </React.StrictMode>
 );
-

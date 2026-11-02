@@ -138,7 +138,7 @@ with sync_playwright() as p:
     check('an unlocked capsule from a sender appears under the Capsules filter', len(cap) == 1 and 'See you in the future' in cap[0] and 'Time capsule' in cap[0], str(cap))
     A.get_by_role('button', name='All', exact=True).click()
 
-    # ------------------------------------------------------------ private room (CampusWhisper)
+    # ------------------------------------------------------------ private room (Campus Rooms)
     go(A, BASE + '#/rooms'); A.fill('#rn', 'Secret Club'); A.get_by_label(re.compile('Show in the public list')).uncheck()
     A.get_by_role('button', name='Create room').click(); A.wait_for_url(re.compile(r'#/room/[A-Z0-9]{6}$'))
     code = A.url.split('/')[-1]

@@ -7,7 +7,7 @@ const MODULES = [
   { c: '#0fa57e', t: 'TruthBox', d: 'Honest feedback sorted into praise and things to improve, with a simple sentiment chart.' },
   { c: '#F2B100', t: 'TimeCapsule', d: 'Pick an unlock date. The message stays sealed, even from you, until that moment.' },
   { c: '#4C7DFF', t: 'MoodPing', d: 'Attach a mood to every message and see your week at a glance.' },
-  { c: '#FF7A2F', t: 'CampusWhisper', d: 'Anonymous live rooms with random names, polls, reports and owner moderation.' },
+  { c: '#FF7A2F', t: 'Campus Rooms', d: 'Anonymous live rooms with random names, polls, reports and owner moderation.' },
 ];
 
 export default function Home() {
@@ -16,8 +16,8 @@ export default function Home() {
     <main className="wrap">
       <section className="hero">
         <div>
-          <h1>Say it without a name.</h1>
-          <p className="lead">WhisperHub gives you a private link for honest messages, voice notes, feedback and messages that open in the future. Nobody has to sign up to write to you.</p>
+          <h1>Your Voice. Your Secret. Your Space.</h1>
+          <p className="lead">Veyora gives you a private link for honest messages, voice notes, feedback and messages that open in the future. Nobody has to sign up to write to you.</p>
           <div className="row">
             <Link className="btn" to={user ? '/dashboard' : '/auth'}>{user ? 'Open my inbox' : 'Create my inbox'}</Link>
             <Link className="btn ghost" to="/rooms">Join an anonymous room</Link>
@@ -30,7 +30,7 @@ export default function Home() {
         </div>
       </section>
 
-      <h2>Six ways to whisper</h2>
+      <h2>Six ways to connect</h2>
       <section className="modgrid">
         {MODULES.map((m) => (
           <article key={m.t} className="card mod" style={{ '--c': m.c, borderTopColor: m.c }}>

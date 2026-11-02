@@ -1,6 +1,6 @@
-# WhisperHub: Anonymous Communication Platform
+# Veyora — Your Voice. Your Secret. Your Space.
 
-One website with six anonymous-messaging modules, built for the Renza recruitment task
+Veyora is a modern, secure, anonymous messaging platform with six messaging modules.
 ("build an anonymous messaging website and host it on GitHub").
 
 | Module | What it does |
@@ -10,7 +10,7 @@ One website with six anonymous-messaging modules, built for the Renza recruitmen
 | **TruthBox** | Feedback and praise categories, separate Positive / Suggestions columns, tone tagging, sentiment chart. |
 | **TimeCapsule** | Sender picks an unlock date. The **database** hides the message until then, even from the owner. Also "message to my future self". |
 | **MoodPing** | A mood on every message (happy, sad, motivation, appreciation), mood bars and a 7-day chart. |
-| **CampusWhisper** | Anonymous live rooms (listed or unlisted), random names, polls, emoji reactions, reports, owner moderation. |
+| **Campus Rooms** | Anonymous live rooms (listed or unlisted), random names, polls, emoji reactions, reports, owner moderation. |
 | **Safety tools** | Block sender, delete, report, per-device and per-network rate limits, honeypot, profanity masking. |
 | **Voice typing** | A mic button next to the message box, room chat and future-self note: tap, speak, and the words appear as text (English, Tamil, Hindi, Telugu, Malayalam). Say "comma", "full stop", "question mark" or "new line" in English to add punctuation. |
 | **Alerts** | Unread count in the tab title and an optional desktop pop-up for new messages and capsules that just opened. |
@@ -34,7 +34,7 @@ You need Node 20+ and a free account at https://supabase.com.
 
 **2. Run it on your computer**
 ```bash
-cd whisperhub
+cd veyora
 npm install
 cp .env.example .env          # Windows: copy .env.example .env
 # open .env and paste VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY
@@ -51,16 +51,16 @@ npm run build                 # production build into dist/
 ```bash
 git init
 git add .
-git commit -m "WhisperHub"
+git commit -m "Veyora"
 git branch -M main
-git remote add origin https://github.com/YOUR-USER/whisperhub.git     # create the empty repo on github.com first
+git remote add origin https://github.com/YOUR-USER/veyora.git     # create the empty repo on github.com first
 git push -u origin main
 ```
 Then on github.com, in the repo:
 1. **Settings > Secrets and variables > Actions > New repository secret**: add `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY`.
 2. **Settings > Pages > Source: GitHub Actions**.
 3. **Actions** tab: open the "Deploy to GitHub Pages" run (or click *Run workflow*). When it is green your site is at
-   `https://YOUR-USER.github.io/whisperhub/`. Submit that link in the Google Form.
+   `https://YOUR-USER.github.io/veyora/`. Submit that link in the Google Form.
 
 ## Commands: you already ran an older schema.sql
 Open **SQL Editor** and run only `supabase/patch_v3.sql` (safe to run twice), then pull the new code.
@@ -118,4 +118,4 @@ tests/                     unit tests (npm test)
   Someone behind a shared network (a campus) shares one network limit.
 - Blocking works per browser: a sender who clears their data can write again.
 - An audio file can stay in storage if a voice upload succeeds but the message then fails (for example a rate limit).
-- Voice typing relies on the browser's speech service: it works in Chrome, Edge and Safari (needs an internet connection and microphone permission) but not in Firefox. In Chrome and Edge the audio is processed by Google or Microsoft; WhisperHub itself only receives the final text.
+- Voice typing relies on the browser's speech service: it works in Chrome, Edge and Safari (needs an internet connection and microphone permission) but not in Firefox. In Chrome and Edge the audio is processed by Google or Microsoft; Veyora itself only receives the final text.

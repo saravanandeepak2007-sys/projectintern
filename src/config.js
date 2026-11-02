@@ -10,4 +10,4 @@ export const SUPABASE_URL = clean(fromCode ? MY_SUPABASE_URL : import.meta.env.V
 export const SUPABASE_ANON_KEY = String(fromCode ? MY_SUPABASE_ANON_KEY : import.meta.env.VITE_SUPABASE_ANON_KEY || '').trim();
 
 export const isConfigured = /^https?:\/\//.test(SUPABASE_URL) && !isPlaceholder(SUPABASE_URL) && !isPlaceholder(SUPABASE_ANON_KEY);
-console.info('[WhisperHub] configured:', isConfigured, '| host:', SUPABASE_URL.replace(/^https?:\/\//, ''));
+console.info('[Veyora] configured:', isConfigured, '| host:', SUPABASE_URL.replace(/^https?:\/\//, ''));

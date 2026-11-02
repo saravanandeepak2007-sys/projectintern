@@ -1,4 +1,4 @@
--- Behaviour tests for the WhisperHub database rules. Runs on plain Postgres with tests/stub.sql.
+-- Behaviour tests for the Veyora database rules. Runs on plain Postgres with tests/stub.sql.
 create table public.t_ids (k text primary key, v text);
 create function public.t_eq(actual bigint, expected bigint, label text) returns void language plpgsql as $$
 begin

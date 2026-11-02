@@ -9,7 +9,7 @@ import { MOODS, moodOf, catLabel, timeAgo, countdown, shareUrl, toLocalInput, er
 
 // Explicit column list: the device code (sender_token) is never sent to the browser.
 const COLS = 'id,kind,body,transcript,audio_path,mood,category,sentiment,unlock_at,is_read,created_at';
-const TITLE = 'WhisperHub: say it without a name';
+const TITLE = 'VEYORA — Your Voice. Your Secret. Your Space.';
 const canNotify = typeof Notification !== 'undefined';
 
 const FILTERS = [
@@ -24,7 +24,7 @@ const HUB = [
   { t: 'TruthBox', c: '#0fa57e', anchor: 'truthbox', d: () => 'Praise and suggestions' },
   { t: 'TimeCapsule', c: '#F2B100', anchor: 'capsules', d: (st) => `${st.locked} sealed` },
   { t: 'MoodPing', c: '#4C7DFF', anchor: 'insights', d: (st, m) => `${m.filter((x) => x.mood).length} mood messages` },
-  { t: 'CampusWhisper', c: '#FF7A2F', to: '/rooms', d: () => 'Rooms and polls' },
+  { t: 'Campus Rooms', c: '#FF7A2F', to: '/rooms', d: () => 'Rooms and polls' },
 ];
 
 export default function Dashboard() {
@@ -68,11 +68,11 @@ export default function Dashboard() {
   // Unread count in the tab title, plus an optional desktop alert when a message arrives or a capsule opens.
   useEffect(() => {
     const unread = msgs.filter((m) => !m.is_read).length;
-    document.title = unread ? `(${unread}) WhisperHub` : TITLE;
+    document.title = unread ? `(${unread}) VEYORA` : TITLE;
     const ids = new Set(msgs.map((m) => m.id));
     if (seen.current && canNotify && Notification.permission === 'granted' && document.hidden) {
       const fresh = msgs.filter((m) => !seen.current.has(m.id));
-      if (fresh.length) { try { new Notification('WhisperHub', { body: fresh.length === 1 ? 'You have a new anonymous message.' : `You have ${fresh.length} new anonymous messages.` }); } catch { /* some mobile browsers block this */ } }
+      if (fresh.length) { try { new Notification('VEYORA', { body: fresh.length === 1 ? 'You have a new anonymous message.' : `You have ${fresh.length} new anonymous messages.` }); } catch { /* some mobile browsers block this */ } }
     }
     seen.current = ids;
   }, [msgs]);
@@ -262,5 +262,4 @@ export default function Dashboard() {
     </main>
   );
 }
-
 

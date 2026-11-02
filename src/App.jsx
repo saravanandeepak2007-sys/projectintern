@@ -14,7 +14,7 @@ function SetupNeeded() {
   return (
     <main className="wrap narrow">
       <h1>Connect your database</h1>
-      <p className="lead">WhisperHub needs a free Supabase project to store messages. It takes about five minutes.</p>
+      <p className="lead">Veyora needs a free Supabase project to store messages. It takes about five minutes.</p>
       <ol className="steps">
         <li>Create a project at supabase.com, then open the SQL Editor and run <code>supabase/schema.sql</code>.</li>
         <li>Copy the Project URL and anon key from Project Settings, API.</li>
@@ -45,7 +45,7 @@ export default function App() {
     <>
       <button type="button" className="skip" onClick={() => document.getElementById('main')?.focus()}>Skip to content</button>
       <header className="nav">
-        <Link to="/" className="logo" aria-label="WhisperHub home"><span className="dot" />WhisperHub</Link>
+        <Link to="/" className="logo" aria-label="Veyora home"><span className="dot" />VEYORA</Link>
         <nav>
           <NavLink to="/rooms">Rooms</NavLink>
           {user ? (
@@ -74,7 +74,7 @@ export default function App() {
         )}
       </div>
       <footer className="foot">
-        <span>WhisperHub</span>
+        <span><strong>VEYORA</strong> · Your Voice. Your Secret. Your Space.</span>
         <Link to="/privacy">How anonymity works</Link>
       </footer>
     </>

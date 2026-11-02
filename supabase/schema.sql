@@ -1,5 +1,5 @@
 -- =====================================================================
--- WhisperHub database schema for Supabase (Postgres).
+-- Veyora database schema for Supabase (Postgres).
 -- Run this whole file once in: Supabase Dashboard > SQL Editor > New query.
 -- Row Level Security (RLS) is what keeps messages private; never disable it.
 -- =====================================================================
@@ -116,7 +116,7 @@ create policy "owner plays unlocked voice" on storage.objects for select to auth
 create policy "owner deletes own voice" on storage.objects for delete to authenticated
   using (bucket_id = 'voice' and (storage.foldername(name))[1] = auth.uid()::text);
 
--- ---------- 4. CampusWhisper: rooms, live chat, polls, reports ----------
+-- ---------- 4. Campus Rooms: rooms, live chat, polls, reports ----------
 create table public.rooms (
   id uuid primary key default gen_random_uuid(),
   code text not null unique check (code ~ '^[A-Z0-9]{6}$'),
