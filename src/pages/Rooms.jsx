@@ -4,6 +4,9 @@ import { supabase } from '../supabase';
 import { useAuth } from '../lib/auth';
 import { TOPICS, roomCode, errText } from '../lib/util';
 
+// Room codes are 6 letters/digits. Accepts anything (typed, pasted, spoken, undefined) and always returns a safe string.
+const normCode = (v) => String(v ?? '').toUpperCase().replace(/[^A-Z0-9]/g, '').slice(0, 6);
+
 export default function Rooms() {
   const nav = useNavigate();
   const { user } = useAuth();
@@ -25,7 +28,11 @@ export default function Rooms() {
       .then(({ data }) => setOwn(data || []));
   }, [user]);
 
-  function join(e) { e.preventDefault(); if (code.trim().length === 6) nav(`/room/${code.trim().toUpperCase()}`); else setErr('Room codes have 6 characters.'); }
+  function join(e) {
+    e.preventDefault();
+    const c = normCode(code);
+    if (c.length === 6) nav(`/room/${c}`); else setErr('Room codes have 6 letters or numbers.');
+  }
   async function create(e) {
     e.preventDefault(); setErr(''); setBusy(true);
     const c = roomCode();
@@ -34,7 +41,7 @@ export default function Rooms() {
     if (error) return setErr(errText(error));
     nav(`/room/${c}`);
   }
-  const list = topic === 'All' ? rooms : rooms.filter((r) => r.topic === topic);
+  const list = (topic === 'All' ? rooms : rooms.filter((r) => r.topic === topic)).filter((r) => r && r.code);
 
   return (
     <main className="wrap">
@@ -44,7 +51,7 @@ export default function Rooms() {
         <form className="card" onSubmit={join}>
           <h3>Join with a code</h3>
           <label className="f" htmlFor="rc">Room code</label>
-          <input id="rc" type="text" maxLength={6} value={code} onChange={(e) => setCode(e.target.value.toUpperCase())} placeholder="e.g. K7M2QX" />
+          <input id="rc" type="text" autoComplete="off" autoCapitalize="characters" spellCheck={false} value={code} onChange={(e) => { setCode(normCode(e?.target?.value)); setErr(''); }} placeholder="e.g. K7M2QX" />
           <button className="btn" style={{ marginTop: 14 }}>Join room</button>
         </form>
         {user ? (

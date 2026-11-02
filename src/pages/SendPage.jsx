@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { supabase } from '../supabase';
+import DictateButton from '../components/DictateButton';
 import { MOODS, CATEGORIES, deviceToken, maskProfanity, classifySentiment, cooldownLeft, markSent, toLocalInput, errText, uid } from '../lib/util';
 
 const MAX_SECONDS = 60;
@@ -138,6 +139,7 @@ export default function SendPage() {
             <label className="f" htmlFor="m">Your message</label>
             <textarea id="m" maxLength={1000} value={text} onChange={(e) => setText(e.target.value)} placeholder="Say what you really think. Be kind, be honest." />
             <p className="hint">{text.length} / 1000</p>
+            <DictateButton value={text} onChange={setText} maxLength={1000} disabled={busy} />
           </>
         ) : (
           <>
@@ -185,3 +187,4 @@ export default function SendPage() {
     </main>
   );
 }
+

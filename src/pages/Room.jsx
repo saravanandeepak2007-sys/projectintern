@@ -2,13 +2,14 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { supabase } from '../supabase';
 import { useAuth } from '../lib/auth';
+import DictateButton from '../components/DictateButton';
 import { deviceToken, roomAnonName, maskProfanity, cooldownLeft, markSent, timeAgo, errText, lsGet, lsSet, uid } from '../lib/util';
 
 const EMOJIS = ['👍', '❤️', '😂', '🔥'];
 
 export default function Room() {
   const { code: rawCode } = useParams();
-  const code = rawCode.toUpperCase();
+  const code = String(rawCode ?? '').toUpperCase();
   const { user } = useAuth();
   const me = deviceToken('room');     // posts
   const voter = deviceToken('vote');  // votes, reactions, reports (kept apart from posts)
@@ -154,6 +155,7 @@ export default function Room() {
           </div>
           <form onSubmit={send} className="row" style={{ marginTop: 10 }}>
             <input type="text" style={{ flex: 1, minWidth: 180 }} aria-label="Message" maxLength={500} value={text} onChange={(e) => setText(e.target.value)} placeholder={`Message as ${name}`} />
+            <DictateButton inline value={text} onChange={setText} maxLength={500} />
             <button className="btn">Send</button>
           </form>
           <p className="hint">You are <b>{name}</b>. <button className="linkbtn" onClick={() => setName(roomAnonName(code, true))}>Pick a new name</button></p>

@@ -12,6 +12,7 @@ One website with six anonymous-messaging modules, built for the Renza recruitmen
 | **MoodPing** | A mood on every message (happy, sad, motivation, appreciation), mood bars and a 7-day chart. |
 | **CampusWhisper** | Anonymous live rooms (listed or unlisted), random names, polls, emoji reactions, reports, owner moderation. |
 | **Safety tools** | Block sender, delete, report, per-device and per-network rate limits, honeypot, profanity masking. |
+| **Voice typing** | A mic button next to the message box, room chat and future-self note: tap, speak, and the words appear as text (English, Tamil, Hindi, Telugu, Malayalam). Say "comma", "full stop", "question mark" or "new line" in English to add punctuation. |
 | **Alerts** | Unread count in the tab title and an optional desktop pop-up for new messages and capsules that just opened. |
 
 **Stack:** React 18 + Vite, React Router (HashRouter, so it works on GitHub Pages), Supabase (Postgres, Auth, Realtime, Storage).
@@ -117,3 +118,4 @@ tests/                     unit tests (npm test)
   Someone behind a shared network (a campus) shares one network limit.
 - Blocking works per browser: a sender who clears their data can write again.
 - An audio file can stay in storage if a voice upload succeeds but the message then fails (for example a rate limit).
+- Voice typing relies on the browser's speech service: it works in Chrome, Edge and Safari (needs an internet connection and microphone permission) but not in Firefox. In Chrome and Edge the audio is processed by Google or Microsoft; WhisperHub itself only receives the final text.

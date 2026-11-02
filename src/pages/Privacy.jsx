@@ -16,6 +16,7 @@ export default function Privacy() {
         <li>Anonymous does not mean untraceable. Hosting providers can keep ordinary network logs, and the writing style or content of a message can reveal its author.</li>
         <li>To make blocking possible, messages in the same inbox from the same browser carry the same scrambled code. Receivers can't see who it is, but they can tell that two messages came from one browser. Blocking only works per browser, so a sender who clears their data can write again.</li>
         <li>Voice notes can be recognised by the person's voice.</li>
+        <li>Voice typing (the microphone button next to text boxes) uses your browser's own speech service. In Chrome and Edge that means your speech is sent to Google or Microsoft to be turned into text. WhisperHub only receives the text you choose to send, never the audio. If that bothers you, type instead.</li>
         <li>Please don't use WhisperHub for harassment or threats. Receivers can delete messages, and room owners can remove posts and review reports.</li>
       </ul>
     </main>

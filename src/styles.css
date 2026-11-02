@@ -134,3 +134,15 @@ label.f { display: block; font-weight: 600; margin: 16px 0 6px; }
 .reacts { display: flex; gap: 6px; margin-top: 6px; flex-wrap: wrap; }
 .reacts button { border: 1px solid color-mix(in srgb, currentColor 30%, transparent); background: transparent; color: inherit; border-radius: 99px; padding: 1px 8px; font-size: .85rem; cursor: pointer; text-decoration: none; }
 .reacts button[aria-pressed=true] { background: color-mix(in srgb, currentColor 22%, transparent); }
+
+/* ---- voice typing (WhatsApp-style dictation) ---- */
+.dict { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-top: 6px; }
+.dict.inline { margin: 0; flex-wrap: nowrap; }
+.dict select { width: auto; padding: 8px 10px; font-size: .9rem; }
+.dict.inline select { padding: 10px 6px; }
+.dictbtn { width: 44px; height: 44px; border-radius: 50%; border: 1.5px solid var(--line); background: var(--card); color: var(--ink); font-size: 1.15rem; cursor: pointer; flex: none; }
+.dictbtn:hover:not(:disabled) { border-color: var(--accent); }
+.dictbtn.live { background: var(--danger); border-color: var(--danger); color: #fff; animation: pulse 1.3s infinite; }
+.dictmsg { color: var(--muted); font-size: .9rem; }
+.dicterr { font-size: .9rem; flex-basis: 100%; }
+

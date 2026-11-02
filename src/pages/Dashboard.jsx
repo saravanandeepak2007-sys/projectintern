@@ -4,6 +4,7 @@ import { supabase } from '../supabase';
 import { useAuth } from '../lib/auth';
 import { Bars, WeekChart } from '../components/Bars';
 import AudioPlayer from '../components/AudioPlayer';
+import DictateButton from '../components/DictateButton';
 import { MOODS, moodOf, catLabel, timeAgo, countdown, shareUrl, toLocalInput, errText, maskProfanity, classifySentiment, uid } from '../lib/util';
 
 // Explicit column list: the device code (sender_token) is never sent to the browser.
@@ -251,6 +252,7 @@ export default function Dashboard() {
           <h3>Message to my future self</h3>
           <label className="f" htmlFor="fs">Note</label>
           <textarea id="fs" style={{ minHeight: 90 }} maxLength={1000} value={fText} onChange={(e) => setFText(e.target.value)} placeholder="Where do you hope to be by then?" />
+          <DictateButton value={fText} onChange={setFText} maxLength={1000} />
           <label className="f" htmlFor="fd">Open on</label>
           <input id="fd" type="datetime-local" min={toLocalInput(new Date(Date.now() + 60000))} value={fDate} onChange={(e) => setFDate(e.target.value)} />
           {fMsg && <p className={fMsg.startsWith('Sealed') ? 'ok' : 'err'} role="status">{fMsg}</p>}
@@ -260,3 +262,5 @@ export default function Dashboard() {
     </main>
   );
 }
+
+
